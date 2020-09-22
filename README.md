@@ -9,10 +9,17 @@
 
 
 ## Features
-*list of features we want to include in the project*
+*Key word ("A task is") activated task identification*
+*Key word ("I will take the task") assignment of tasks to individuals*
+*Task grouping by technical challenges associated*
+*Key word ("I have completed") task completion tracking*
+*Task assignment suggestion*
 
 ## Platforms
-*list of platforms we want to utilize*
+*Windows 10*
+*Unix*
 
 ## Consumers
-*list of potential users of the system*
+*Colleges and Universities*
+*Large Businesses interested in more efficient project managment*
+*Small group projects without well defined leadership*
