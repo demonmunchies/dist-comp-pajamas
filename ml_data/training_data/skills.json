@@ -1,0 +1,35 @@
+[
+    {
+        "name": "java"
+    },
+    {
+        "name": "python"
+    },
+    {
+        "name": "javascript"
+    },
+    {
+        "name": "c++"
+    },
+    {
+        "name": "database"
+    },
+    {
+        "name": "docker"
+    },
+    {
+        "name": "angular"
+    },
+    {
+        "name": "backend"
+    },
+    {
+        "name": "frontend"
+    },
+    {
+        "name": "machine learning"
+    },
+    {
+        "name": "styling"
+    }
+]
