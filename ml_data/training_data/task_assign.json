@@ -1,0 +1,37 @@
+{
+    "task_assign": [
+      {
+        "data": [
+          {
+            "text": "I can "
+          },
+          {
+            "text": " deploy the service on AWS.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I will "
+          },
+          {
+            "text": " deploy the service on AWS.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "If nobody else can, I will "
+          },
+          {
+            "text": " set up a GitHub and give everyone access.",
+            "entity": "task_name"
+          }
+        ]
+      }
+    ]
+}
