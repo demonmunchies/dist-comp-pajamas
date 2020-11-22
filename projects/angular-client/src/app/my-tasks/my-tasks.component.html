@@ -1,0 +1,26 @@
+<mat-list>
+    <div mat-subheader>My Tasks</div>
+    <ng-container *ngFor="let task of myTasks; last as isLast">
+        <mat-divider></mat-divider>
+        <ng-container *ngTemplateOutlet="taskTemplate; context: {task: task}"></ng-container>
+        <mat-divider *ngIf="isLast"></mat-divider>
+    </ng-container>
+    <div mat-subheader>Unassigned</div>
+    <ng-container *ngFor="let task of unassignedTasks; last as isLast">
+        <mat-divider></mat-divider>
+        <ng-container *ngTemplateOutlet="taskTemplate; context: {task: task}"></ng-container>
+        <mat-divider *ngIf="isLast"></mat-divider>
+    </ng-container>
+</mat-list>
+
+<ng-template #taskTemplate let-task="task">
+    <mat-list-item>
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <div mat-line>{{task.title}}</div>
+        <div mat-line *ngIf="task.description">{{task.description}}</div>
+        <div mat-line mat-card-subtitle>
+            <span>{{task.assigneeId ? "Assigned to " + (task.assigneeId) : "Not Assigned"}}</span>
+            <span> &#183; {{task.startDate ? "Started on " + (task.startDate | date) : "Not Started"}}</span>
+        </div>
+    </mat-list-item>
+</ng-template>
