@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.sidenav-container {
+  height: 100%;
+  flex: 1;
+}
+  
+.sidenav {
+  width: 200px;
+}
+  
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
