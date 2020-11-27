@@ -3,14 +3,7 @@
         {
             "data": [
                 {
-                    "text":"Jane: Lynn, please "
-                },
-                {
-                    "text":"come to my office.",
-                    "entity":"task_name"
-                },
-                {
-                    "text":" I just received a revised purchase order from one of our customers."
+                    "text":"Jane: Lynn, please come to my office. I just received a revised purchase order from one of our customers."
                 }
             ]
         },
@@ -179,11 +172,7 @@
         {
             "data": [
                 {
-                    "text":"Jane: I bet all the customers want their orders now or as soon as possible. The Production department will have to "
-                },
-                {
-                    "text":"work a lot of overtime this month.",
-                    "entity":"task_name"
+                    "text":"Jane: I bet all the customers want their orders now or as soon as possible. The Production department will have to work a lot of overtime this month."
                 }
             ]
         },
