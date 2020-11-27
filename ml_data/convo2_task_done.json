@@ -49,39 +49,21 @@
         {
             "data":[
                 {
-                    "text":"Tom: I will. I am very interested in the subject of Leadership. I was promoted to the position of Supervisor a few months ago, and I have to "
-                },
-                {
-                    "text":"manage a staff of ten people.",
-                    "entity":"task_name"
-                },
-                {
-                    "text":" It can be quite a difficult situation sometimes. It is the reason why I am here today."
+                    "text":"Tom: I will. I am very interested in the subject of Leadership. I was promoted to the position of Supervisor a few months ago, and I have to manage a staff of ten people. It can be quite a difficult situation sometimes. It is the reason why I am here today."
                 }
             ]
         },
         {
             "data":[
                 {
-                    "text":"Ana: Same here. I only have seven people reporting to me; yet, sometimes I feel like pulling my hair out. I need to find a way to "
-                },
-                {
-                    "text":"create harmony and cooperation within my department.",
-                    "entity":"task_name"
+                    "text":"Ana: Same here. I only have seven people reporting to me; yet, sometimes I feel like pulling my hair out. I need to find a way to create harmony and cooperation within my department."
                 }
             ]
         },
         {
             "data":[
                 {
-                    "text":"Tom: I also need to "
-                },
-                {
-                    "text":"learn how to better manage my workload.",
-                    "entity":"task_name"
-                },
-                {
-                    "text":" I always run out of time. It seems like the days are getting shorter and shorter."
+                    "text":"Tom: I also need to learn how to better manage my workload. I always run out of time. It seems like the days are getting shorter and shorter."
                 }
             ]
         },
@@ -102,18 +84,7 @@
         {
             "data":[
                 {
-                    "text":"Tom: Let's "
-                },
-                {
-                    "text":"see whether I will have any free time next month.",
-                    "entity":"task_name"
-                },
-                {
-                    "text":" I know sometime next month I will have to "
-                },
-                {
-                    "text":"go to Texas on a business trip.",
-                    "entity":"task_name"
+                    "text":"Tom: Let's see whether I will have any free time next month. I know sometime next month I will have to go to Texas on a business trip."
                 }
             ]
         },
@@ -162,25 +133,14 @@
         {
             "data":[
                 {
-                    "text":"Ana: Let's hope so. We need to "
-                },
-                {
-                    "text":"keep our employees busy.",
-                    "entity":"task_name"
+                    "text":"Ana: Let's hope so. We need to keep our employees busy."
                 }
             ]
         },
         {
             "data":[
                 {
-                    "text":"Tom: I have some very talented employees, and I would like to "
-                },
-                {
-                    "text":"keep their minds sharp.",
-                    "entity":"task_name"
-                },
-                {
-                    "text":" They tend to be bored when things slow down, and that is not good."
+                    "text":"Tom: I have some very talented employees, and I would like to keep their minds sharp. They tend to be bored when things slow down, and that is not good."
                 }
             ]
         },
@@ -201,11 +161,7 @@
                     "entity":"task_name"
                 },
                 {
-                    "text":", and we can "
-                },
-                {
-                    "text":"use this slow period to finish the process.",
-                    "entity":"task_name"
+                    "text":", and we can use this slow period to finish the process."
                 }
             ]
         },
@@ -219,11 +175,7 @@
         {
             "data":[
                 {
-                    "text":"Tom: The topic of the next session, How To Make Positive Impression On Others And Gain Visibility And Influence In The Workplace, seems to be really interesting. We better not miss any part of it. Let's "
-                },
-                {
-                    "text":"get back to our seats so that we can learn how to bring out the best in ourselves as well as our employees.",
-                    "entity":"task_name"
+                    "text":"Tom: The topic of the next session, How To Make Positive Impression On Others And Gain Visibility And Influence In The Workplace, seems to be really interesting. We better not miss any part of it. Let's get back to our seats so that we can learn how to bring out the best in ourselves as well as our employees."
                 }
             ]
         }
