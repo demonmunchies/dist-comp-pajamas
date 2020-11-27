@@ -23,7 +23,6 @@ def all_meetings():
         meetings.append(meeting_json)
     return make_response(jsonify(meetings), 200)
 
-
 @meetings_bp.route('/add', methods=['POST'])
 def add_meeting():
     mongo = PyMongo(app)
@@ -49,7 +48,6 @@ def add_meeting():
             mongo.db.meetings.insert_one(meeting)
             return make_response(jsonify({'status': 'success'}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
-
 
 @meetings_bp.route('/get', methods=['POST'])
 def get_meeting():
@@ -89,10 +87,3 @@ def get_meeting():
                     meetings.append(meeting_json)
                 return make_response(jsonify(meetings), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
-
-@meetings_bp.route('/upload', methods=['POST'])
-def upload():
-    # get audio file
-    # transcribe
-    # call BERT model
-    return True
