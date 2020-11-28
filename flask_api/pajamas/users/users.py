@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request, make_response, jsonify
 from flask import current_app as app
 from flask_pymongo import PyMongo
-import bcrypt
+from pajamas.extensions import bcrypt
 from datetime import datetime, timezone, timedelta
 import secrets
 
-users_bp = Blueprint('users_bp', __name__)
+bp = Blueprint('users_bp', __name__)
 
-@users_bp.route('/', methods=['GET'])
+@bp.route('/', methods=['GET'])
 def get_users():
     mongo = PyMongo(app)
     names = []
@@ -15,7 +15,7 @@ def get_users():
         names.append(str(user['name']))
     return make_response(jsonify(names), 200)
 
-@users_bp.route('/sessions', methods=['GET'])
+@bp.route('/sessions', methods=['GET'])
 def get_sessions():
     mongo = PyMongo(app)
     sessions = []
@@ -23,7 +23,7 @@ def get_sessions():
         sessions.append((session['user_id'], session['expire_time']))
     return make_response(jsonify(sessions), 200)
 
-@users_bp.route('/signup', methods=['POST'])
+@bp.route('/signup', methods=['POST'])
 def signup():
     mongo = PyMongo(app)
     post_data = request.json
@@ -44,7 +44,7 @@ def signup():
         return make_response(jsonify({'status': 'success', 'token': token}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
-@users_bp.route('/login', methods=['POST'])
+@bp.route('/login', methods=['POST'])
 def login():
     mongo = PyMongo(app)
     post_data = request.json
@@ -60,7 +60,7 @@ def login():
                 return make_response(jsonify({'status': 'success', 'token': token}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
-@users_bp.route('/logout', methods=['POST'])
+@bp.route('/logout', methods=['POST'])
 def logout():
     mongo = PyMongo(app)
     post_data = request.json
