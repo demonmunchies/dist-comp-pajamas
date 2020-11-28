@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request, make_response, jsonify
 from flask import current_app as app
-from users.routes import authenticate
+from pajamas.users import authenticate
 from flask_pymongo import PyMongo, ObjectId
 from datetime import datetime, timezone
 
-meetings_bp = Blueprint('meetings_bp', __name__)
+bp = Blueprint('meetings_bp', __name__)
 
-@meetings_bp.route('/', methods=['GET'])
+@bp.route('/', methods=['GET'])
 def all_meetings():
     mongo = PyMongo(app)
     meetings = []
@@ -23,7 +23,7 @@ def all_meetings():
         meetings.append(meeting_json)
     return make_response(jsonify(meetings), 200)
 
-@meetings_bp.route('/add', methods=['POST'])
+@bp.route('/add', methods=['POST'])
 def add_meeting():
     mongo = PyMongo(app)
     post_data = request.json
@@ -49,7 +49,7 @@ def add_meeting():
             return make_response(jsonify({'status': 'success'}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
-@meetings_bp.route('/get', methods=['POST'])
+@bp.route('/get', methods=['POST'])
 def get_meeting():
     mongo = PyMongo(app)
     post_data = request.json
