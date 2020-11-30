@@ -32,6 +32,127 @@
             "entity": "task_name"
           }
         ]
+      },
+      {
+        "data": [
+          {
+            "text": "I can "
+          },
+          {
+            "text": " start working on the backend.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I am going to "
+          },
+          {
+            "text": " start training the network.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "If it's okay with you, I will "
+          },
+          {
+            "text": " write the data generation script.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I'm planning on "
+          },
+          {
+            "text": " designing the logo.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "Yeah, I will"
+          },
+          {
+            "text": " set up the container.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "If it's okay with you, I'm going to "
+          },
+          {
+            "text": " work on the client side.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I'm going to "
+          },
+          {
+            "text": " set up a follow up meeting.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "Yes, I can "
+          },
+          {
+            "text": " email the link to you.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I'm about to "
+          },
+          {
+            "text": " train the network.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I can handle "
+          },
+          {
+            "text": " creating the presentation.",
+            "entity": "task_name"
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "text": "I'll take on "
+          },
+          {
+            "text": " presenting the prototype.",
+            "entity": "task_name"
+          }
+        ]
       }
     ]
 }
