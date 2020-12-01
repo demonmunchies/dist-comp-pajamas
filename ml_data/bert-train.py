@@ -3,6 +3,8 @@ import json
 import warnings
 import numpy as np
 
+import glob
+
 from tqdm import tqdm, trange
 
 import torch
@@ -33,7 +35,7 @@ def parse_json_file():
     sent = []
     tags = []
 
-    for f in ['convo-1.json', 'convo-2.json', 'convo-3.json']:
+    for f in glob.glob('training_data/*task*.json'):
         df = pd.read_json(f)
         npdf = df.to_numpy()
         for x in npdf:
@@ -208,7 +210,7 @@ for _ in trange(epochs, desc="Epoch"):
 
     # Calculate the average loss over the training data.
     avg_train_loss = total_loss / len(train_dataloader)
-    print("Average train loss: {}".format(avg_train_loss))
+    # print("Average train loss: {}".format(avg_train_loss))
 
     # Store the loss value for plotting the learning curve.
     loss_values.append(avg_train_loss)
@@ -248,14 +250,14 @@ for _ in trange(epochs, desc="Epoch"):
 
     eval_loss = eval_loss / len(valid_dataloader)
     validation_loss_values.append(eval_loss)
-    print("Validation loss: {}".format(eval_loss))
+    # print("Validation loss: {}".format(eval_loss))
     pred_tags = [tag_values[p_i] for p, l in zip(predictions, true_labels)
                                  for p_i, l_i in zip(p, l) if tag_values[l_i] != "PAD"]
     valid_tags = [tag_values[l_i] for l in true_labels
                                   for l_i in l if tag_values[l_i] != "PAD"]
-    print("Validation Accuracy: {}".format(accuracy_score(pred_tags, valid_tags)))
+    # print("Validation Accuracy: {}".format(accuracy_score(pred_tags, valid_tags)))
     # print("Validation F1-Score: {}".format(f1_score(pred_tags, valid_tags)))
-    print()
+    # print()
 
 import matplotlib.pyplot as plt
 
