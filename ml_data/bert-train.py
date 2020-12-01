@@ -154,7 +154,7 @@ optimizer = AdamW(
 
 from transformers import get_linear_schedule_with_warmup
 
-epochs = 50
+epochs = 6
 max_grad_norm = 1.0
 
 # Total number of training steps is number of batches * number of epochs.
@@ -273,3 +273,26 @@ plt.legend()
 
 plt.show()
 
+# torch.save(model.state_dict(), 'model.h5')
+
+test_sentence = """Thank you Mark. Let me just summarize the main points of the last meeting. We began the meeting by approving the changes in our sales reporting system discussed on May 30th. After briefly revising the changes that will take place, we moved on to a brainstorming session concerning after customer support improvements. You'll find a copy of the main ideas developed and discussed in these sessions in the photocopies in front of you. The meeting was declared closed at 11.30."""
+
+tokenized_sentence = tokenizer.encode(test_sentence)
+input_ids = torch.tensor([tokenized_sentence]).cuda()
+
+with torch.no_grad():
+    output = model(input_ids)
+label_indices = np.argmax(output[0].to('cpu').numpy(), axis=2)
+
+# join bpe split tokens
+tokens = tokenizer.convert_ids_to_tokens(input_ids.to('cpu').numpy()[0])
+new_tokens, new_labels = [], []
+for token, label_idx in zip(tokens, label_indices[0]):
+    if token.startswith("##"):
+        new_tokens[-1] = new_tokens[-1] + token[2:]
+    else:
+        new_labels.append(tag_values[label_idx])
+        new_tokens.append(token)
+
+for token, label in zip(new_tokens, new_labels):
+    print("{}\t{}".format(label, token))
