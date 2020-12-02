@@ -22,7 +22,7 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    app.register_blueprint(users.bp, )
-    app.register_blueprint(meetings.bp)
-    app.register_blueprint(audio.bp)
+    app.register_blueprint(users.bp, url_prefix='/users')
+    app.register_blueprint(meetings.bp, url_prefix='/meetings')
+    app.register_blueprint(audio.bp, url_prefix='/audio')
     return None
