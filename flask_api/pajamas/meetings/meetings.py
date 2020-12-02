@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, make_response, jsonify
-from flask import current_app as app
 from pajamas.users import authenticate
-from flask_pymongo import PyMongo, ObjectId
+from pajamas.extensions import mongo
+from flask_pymongo import ObjectId
 from datetime import datetime, timezone
 
 bp = Blueprint('meetings_bp', __name__)
@@ -9,7 +9,6 @@ bp = Blueprint('meetings_bp', __name__)
 
 @bp.route('/', methods=['GET'])
 def all_meetings():
-    mongo = PyMongo(app)
     meetings = []
     for meeting in mongo.db.meetings.find()[0:50]:
         meeting_json = {
@@ -27,7 +26,6 @@ def all_meetings():
 
 @bp.route('/add', methods=['POST'])
 def add_meeting():
-    mongo = PyMongo(app)
     post_data = request.json
     email = post_data.get('email')
     token = post_data.get('token')
@@ -98,7 +96,6 @@ def update_meeting():
 
 @bp.route('/get', methods=['POST'])
 def get_meeting():
-    mongo = PyMongo(app)
     post_data = request.json
     email = post_data.get('email')
     token = post_data.get('token')

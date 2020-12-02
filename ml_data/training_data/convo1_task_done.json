@@ -1,0 +1,375 @@
+{
+    "task_assign": [
+        {
+            "data": [
+                {
+                    "text": "Meeting Chairmen: If we are all here, let's "
+                },
+                {
+                    "text": "get started",
+                    "entity": "task_name"
+                },
+                {
+                    "text":"I'd like you to "
+                },
+                {
+                    "text":"please join me in welcoming Jack Peterson",
+                    "entity": "task_name"
+                },
+                {
+                    "text":", our Southwest Area Sales Vice President."
+                }
+
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text": "Jack Peterson: Thank you for having me, I'm looking forward to today's meeting."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text": "Meeting Chairman: I'd also like to "
+                },
+                {
+                    "text": "introduce Margaret Simmons",
+                    "entity": "task_name"
+                },
+                {
+                    "text": "who recently joined our team."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text": "Margaret Simmons: May I also "
+                },
+                {
+                    "text": "introduce my assistant, Bob Hamp.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text": "Meeting Chairman: Welcome Bob. I'm afraid our national sales director, Anne Trusting, can't be with us today. She is in Kobe at the moment, developing our Far East sales force."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text": "Meeting Chairman: Let's "
+                },
+                {
+                    "text": "get started.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":"We're here today to "
+                },
+                {
+                    "text":"discuss ways of improving sales",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" in rural market areas. First, let's "
+                },
+                {
+                    "text":"go over the report from the last meeting",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" which was held on June 24th. Right, Tom, over to you."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Tom Robbins: Thank you Mark. Let me just "
+                },
+                {
+                    "text":"summarize the main points of the last meeting.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" We began the meeting by approving the changes in our sales reporting system discussed on May 30th. After briefly revising the changes that will take place, we moved on to a brainstorming session concerning after customer support improvements. "
+                },
+                {
+                    "text":"You'll find a copy of the main ideas",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" developed and discussed in these sessions in the photocopies in front of you. The meeting was declared closed at 11.30."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Meeting Chairman: Thank you Tom. So, if there is nothing else we need to discuss, let's "
+                },
+                {
+                    "text":"move on to today's agenda.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" Have you all received a copy of today's agenda? If you don't mind, I'd like to "
+                },
+                {
+                    "text":"skip item 1 and move on to item 2",
+                    "entity":"task_name"
+                },
+                {
+                    "text":": Sales improvement in rural market areas. Jack has kindly agreed to "
+                },
+                {
+                    "text":"give us a report on this matter.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" Jack?"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Jack Peterson: Before I begin the report, I'd like to "
+                },
+                {
+                    "text":"get some ideas from you all.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" How do you feel about rural sales in your sales districts? I suggest "
+                },
+                {
+                    "text":"we go round the table first to get all of your input.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"John Ruting: In my opinion, we have been "
+                },
+                {
+                    "text":"focusing too much on urban customers and their needs.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" The way I see things, we need to "
+                },
+                {
+                    "text":"return to our rural base by developing an advertising campaign to focus on their particular needs.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Alice Linnes: I'm afraid I can't agree with you. I think rural customers want to feel as important as our customers living in cities. I suggest we "
+                },
+                {
+                    "text":"give our rural sales teams more help with advanced customer information reporting.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Donald Peters: Excuse me, I didn't catch that. Could you "
+                },
+                {
+                    "text":"repeat that",
+                    "entity":"task_name"
+                },
+                {
+                    "text":", please?"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Alice Linnes: I just stated that we need to "
+                },
+                {
+                    "text":"give our rural sales teams better customer information reporting.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"John Ruting: I don't quite follow you. What exactly do you mean?"
+                }
+            ]   
+        },
+        {
+            "data":[
+                {
+                    "text":"Alice Linnes: Well, we provide our city sales staff with database information on all of our larger clients. We should be "
+                },
+                {
+                    "text":"providing the same sort of knowledge on our rural customers to our sales staff there.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Jack Peterson: Would you like to add anything, Jennifer?"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Jennifer Miles: I must admit I never thought about rural sales that way before. I have to agree with Alice."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Jack Peterson: Well, let me "
+                },
+                {
+                    "text":"begin with this Power Point presentation",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" (Jack presents his report). As you can see, we are developing new methods to reach out to our rural customers."
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"John Ruting: I suggest "
+                },
+                {
+                    "text": "we break up into groups and discuss the ideas we've seen presented.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Meeting Chairman: Unfortunately, we're running short of time. We'll have to "
+                },
+                {
+                    "text":"leave that to another time.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Jack Peterson: Before we close, let me just "
+                },
+                {
+                    "text":"summarize the main points:",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Rural customers need special help to feel more valued.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Our sales teams need more accurate information on our customers.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"A survey will be completed to collect data on spending habits in these areas.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"The results of this survey will be delivered to our sales teams.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"We are considering specific data mining procedures to help deepen our understanding.",
+                    "entity":"task_name"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Meeting Chairman: Thank you very much Jack. Right, it looks as though we've covered the main items Is there any other business?"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Donald Peters: Can we "
+                },
+                {
+                    "text":"fix the next meeting date",
+                    "entity":"task_name"
+                },
+                {
+                    "text":", please?"
+                }
+            ]
+        },
+        {
+            "data":[
+                {
+                    "text":"Meeting Chairman: Good idea Donald. How does Friday in two weeks time sound to everyone? Let's "
+                },
+                {
+                    "text":"meet at the same time, 9 o'clock.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" Is that OK for everyone? Excellent. I'd like to "
+                },
+                {
+                    "text":"thank Jack for coming to our meeting today.",
+                    "entity":"task_name"
+                },
+                {
+                    "text":" The meeting is closed."
+                }
+            ]
+        }
+    ]
+}

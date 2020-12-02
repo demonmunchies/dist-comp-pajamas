@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Room: {{ room }}</title>
+    </head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="//www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket;
+        $(function() {
+            socket = io.connect('http://' + document.domain + ':' + location.port + '/audio');
+            var recorder;
+            navigator.mediaDevices.getUserMedia({
+                audio: true,
+                video: false
+            }).then(function(stream) {
+                var mediaStream = stream;
+                recorder = RecordRTC(mediaStream, {
+                    type: 'audio',
+                    mimeType: 'audio/wav',
+                    recorderType: StereoAudioRecorder,
+                    numberOfAudioChannels: 1,
+                    desiredSampRate: 16000,
+                    timeSlice: 1000,
+                    ondataavailable: function(blob) {
+                        socket.emit('send-audio', {blob: blob, room: '{{ room }}', name: '{{ name }}'});
+                    }
+                });
+                recorder.startRecording();
+            });
+            socket.on('connect', function() {
+                console.log('connected');
+                socket.emit('joined', {room: '{{ room }}', name: '{{ name }}'});
+            });
+            socket.on('status', function(data) {
+                console.log(data.msg)
+                $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
+                $('#chat').scrollTop($('#chat')[0].scrollHeight);
+            });
+            socket.on('message', function(data) {
+                console.log(data.msg)
+                $('#chat').val($('#chat').val() + data.msg + '\n');
+                $('#chat').scrollTop($('#chat')[0].scrollHeight);
+            });
+            socket.on('receive-audio', function(data) {
+                console.log('received audio');
+            });
+        });
+        function leave_room() {    
+            console.log('disconnected');
+            socket.emit('left', {room: '{{ room }}', name: '{{ name }}'}, function() {
+                socket.disconnect();
+                window.location.href = "{{ url_for('audio_bp.index') }}";
+            });
+        };
+    </script>
+
+    <body>
+        <h1>Room: {{ room }}</h1>
+        <textarea id="chat" cols="80" rows="20"></textarea><br><br>
+        <a href="#" onclick="leave_room();">Leave this room</a>
+    </body>
+</html>
