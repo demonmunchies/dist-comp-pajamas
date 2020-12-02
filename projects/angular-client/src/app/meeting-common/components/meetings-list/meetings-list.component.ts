@@ -11,10 +11,28 @@ export class MeetingsListComponent implements OnInit {
 
   @Input() meetings: MeetingInfo[] = [];
 
-  totalMinutes(startDate: Date, endDate: Date): number {
+  isInProgress(meeting: MeetingInfo): boolean {
+    return meeting.start_date && !meeting.end_date;
+  }
+
+  isDone(meeting: MeetingInfo): boolean {
+    return !!(meeting.start_date && meeting.end_date);
+  }
+
+  status(meeting: MeetingInfo): string {
+    if (this.isDone(meeting)) {
+      return "Completed";
+    } else if (this.isInProgress(meeting)) {
+      return "In Progress";
+    } else {
+      return "Not Started";
+    }
+  }
+
+  totalMinutes(startDate: string, endDate?: string): number {
     const start = dayjs(startDate);
-    const end = dayjs(endDate);
-    return start.diff(end, 'minute');
+    const end = endDate ? dayjs(endDate) : dayjs();
+    return end.diff(start, 'minute');
   }
 
   constructor() { }

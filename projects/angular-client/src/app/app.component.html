@@ -19,11 +19,9 @@
             <mat-toolbar>Menu</mat-toolbar>
             <mat-nav-list>
                 <a mat-list-item href="#">Sign In</a>
-                <a mat-list-item href="#">Start a Meeting</a>
-                <a mat-list-item [routerLink]="['my-meetings']" routerLinkActive="active"
-                    (click)="onSideNavRoute('Meetings')">View Meetings</a>
-                <a mat-list-item [routerLink]="['my-tasks']" routerLinkActive="active"
-                    (click)="onSideNavRoute('Tasks')">View Tasks</a>
+                <a mat-list-item [routerLink]="['new-meeting']" routerLinkActive="active">Start a Meeting</a>
+                <a mat-list-item [routerLink]="['my-meetings']" routerLinkActive="active">View Meetings</a>
+                <a mat-list-item [routerLink]="['my-tasks']" routerLinkActive="active">View Tasks</a>
                 <a mat-list-item href="#">Sign Out</a>
             </mat-nav-list>
         </mat-sidenav>

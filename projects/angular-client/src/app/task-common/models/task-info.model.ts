@@ -3,7 +3,7 @@ export interface TaskInfo {
     title: string;
     description?: string;
     assigneeId?: string;
-    startDate?: Date;
-    endDate?: Date;
+    startDate?: string;
+    endDate?: string;
     skills?: string[];
 }

@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
-import { SearchResponse } from 'src/app/search-common/models/search-response.model';
 import { MeetingInfo } from '../models/meeting-info.model';
 import { MeetingSearchParams } from '../models/meeting-search-params.model';
 
 export interface MeetingServiceInterface {
-    search(params: MeetingSearchParams): Observable<SearchResponse<MeetingInfo>>;
+    search(params: MeetingSearchParams): Observable<MeetingInfo[]>;
     get(id: string): Observable<MeetingInfo>;
+    put(meeting: Partial<MeetingInfo>): Observable<MeetingInfo>
+    post(title: string, startDate: string, endDate: string, participantIds: string[]): Observable<{ meeting_id: string }>;
 }
