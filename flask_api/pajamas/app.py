@@ -10,7 +10,7 @@ from pajamas.extensions import (
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_pyfile('config.py')
+    app.config.from_pyfile('config.cfg')
     register_extensions(app)
     register_blueprints(app)
     return app
