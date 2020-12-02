@@ -1,8 +1,9 @@
+from datetime import datetime, timezone
 from flask import Blueprint, render_template, request, make_response, jsonify
+from flask_pymongo import ObjectId
 from pajamas.users import authenticate
 from pajamas.extensions import mongo
-from flask_pymongo import ObjectId
-from datetime import datetime, timezone
+
 
 bp = Blueprint('meetings_bp', __name__)
 
@@ -52,7 +53,6 @@ def add_meeting():
 
 @bp.route('/update', methods=['PUT'])
 def update_meeting():
-    mongo = PyMongo(app)
     post_data = request.json
     email = post_data.get('email')
     token = post_data.get('token')

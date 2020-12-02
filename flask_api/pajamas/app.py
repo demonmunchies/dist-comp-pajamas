@@ -1,19 +1,18 @@
 from flask import Flask
-from flask_cors import CORS
 from pajamas import users, meetings, audio
 from pajamas.extensions import (
     bcrypt,
     mongo,
-    socketio
+    socketio,
+    cors
 )
+
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_pyfile('config.py')
+    app.config.from_pyfile('config.cfg')
     register_extensions(app)
     register_blueprints(app)
-    if app.config['DEBUG']:
-        CORS(app)
     return app
 
 
@@ -21,6 +20,8 @@ def register_extensions(app):
     bcrypt.init_app(app)
     mongo.init_app(app)
     socketio.init_app(app)
+    if app.config['DEBUG']:
+        cors.init_app(app)
     return None
 
 

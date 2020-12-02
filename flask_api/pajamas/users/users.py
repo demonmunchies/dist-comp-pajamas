@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template, request, make_response, jsonify
-from flask import current_app as app
-from pajamas.extensions import bcrypt
-from pajamas.extensions import mongo
 from datetime import datetime, timezone, timedelta
 import secrets
+from flask import Blueprint, render_template, request, make_response, jsonify
+from pajamas.extensions import bcrypt
+from pajamas.extensions import mongo
+
 
 bp = Blueprint('users_bp', __name__)
+
 
 @bp.route('/', methods=['GET'])
 def get_users():
@@ -14,12 +15,14 @@ def get_users():
         names.append(str(user['name']))
     return make_response(jsonify(names), 200)
 
+
 @bp.route('/sessions', methods=['GET'])
 def get_sessions():
     sessions = []
     for session in mongo.db.sessions.find()[0:50]:
         sessions.append((session['user_id'], session['expire_time']))
     return make_response(jsonify(sessions), 200)
+
 
 @bp.route('/signup', methods=['POST'])
 def signup():
@@ -41,6 +44,7 @@ def signup():
         return make_response(jsonify({'status': 'success', 'token': token}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
+
 @bp.route('/login', methods=['POST'])
 def login():
     post_data = request.json
@@ -56,6 +60,7 @@ def login():
                 return make_response(jsonify({'status': 'success', 'token': token}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
+
 @bp.route('/logout', methods=['POST'])
 def logout():
     post_data = request.json
@@ -69,6 +74,7 @@ def logout():
             return make_response(jsonify({'status': 'success'}), 200)
     return make_response(jsonify({'status': 'failed'}), 200)
 
+
 def login_user(user_id):
     current_time = datetime.now(timezone.utc)
     token = secrets.token_urlsafe()
@@ -81,8 +87,10 @@ def login_user(user_id):
     mongo.db.sessions.insert_one(session)
     return token
 
+
 def logout_user(user_id):
     mongo.db.sessions.delete_one({'user_id': str(user_id)})
+
 
 def authenticate(user_id, token):
     session = mongo.db.sessions.find_one({'user_id': str(user_id)})
