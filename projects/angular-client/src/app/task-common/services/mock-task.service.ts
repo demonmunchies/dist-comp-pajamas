@@ -14,8 +14,8 @@ export class MockTaskService implements TaskServiceInterface {
   constructor() { }
 
   private readonly db: TaskInfo[] = [
-    { id: "1", title: "Angular Navigation Links", description: "Make angular app have navigation links to pages.", assigneeId: "1", startDate: new Date(), endDate: new Date() },
-    { id: "2", title: "Angular My Meetings Page", description: "Make Meetings Page to display all past recorded meetings.", assigneeId: "1", startDate: new Date() },
+    { id: "1", title: "Angular Navigation Links", description: "Make angular app have navigation links to pages.", assigneeId: "1", startDate: new Date().toISOString(), endDate: new Date().toISOString() },
+    { id: "2", title: "Angular My Meetings Page", description: "Make Meetings Page to display all past recorded meetings.", assigneeId: "1", startDate: new Date().toISOString() },
     { id: "3", title: "Make Training Data", description: "Make more training data intents for model." }
   ]
 

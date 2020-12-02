@@ -1,8 +1,9 @@
 export interface MeetingInfo {
-    id: string;
-    startDate: Date;
-    endDate: Date;
+    meeting_id: string;
+    start_date: string;
+    end_date: string;
     title: string;
-    creatorId: string;
-    participantIds: string[];
+    creator_id: string;
+    participant_ids: string[];
+    creation_date: string;
 }

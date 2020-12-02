@@ -16,18 +16,21 @@ import { AppComponent } from './app.component';
 import { MyMeetingsModule } from './my-meetings/my-meetings.module';
 import { MeetingService } from './meeting-common/services/meeting.service';
 import { MockMeetingService } from './meeting-common/services/mock-meeting.service';
-import { MyTasksComponent } from './my-tasks/my-tasks.component';
 import { MyTasksModule } from './my-tasks/my-tasks.module';
 import { TaskService } from './task-common/services/task.service';
 import { MockTaskService } from './task-common/services/mock-task.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NewMeetingModule } from './new-meeting/new-meeting.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { MeetingModule } from './meeting/meeting.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MyTasksComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
@@ -40,11 +43,14 @@ import { MockTaskService } from './task-common/services/mock-task.service';
     MatSidenavModule,
     MatListModule,
     MyMeetingsModule,
-    MyTasksModule
+    MyTasksModule,
+    NewMeetingModule,
+    AuthenticationModule,
+    MeetingModule
   ],
   providers: [
-    { provide: MeetingService, useClass: MockMeetingService },
-    { provide: TaskService, useClass: MockTaskService }
+    //{ provide: MeetingService, useClass: MockMeetingService },
+    //{ provide: TaskService, useClass: MockTaskService }
   ],
   bootstrap: [AppComponent]
 })

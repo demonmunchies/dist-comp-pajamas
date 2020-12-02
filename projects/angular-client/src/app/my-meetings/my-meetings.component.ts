@@ -19,8 +19,8 @@ export class MyMeetingsComponent implements OnInit {
       offset: 0,
       rows: 10
     };
-    this.meetingService.search(params).subscribe(response => {
-      this.meetings = response.results;
+    this.meetingService.search(params).subscribe(meetings => {
+      this.meetings = meetings;
     });
   }
 

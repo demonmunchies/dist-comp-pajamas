@@ -1,9 +1,9 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, mergeMap, shareReplay } from 'rxjs/operators';
+import { filter, map, mergeMap, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,12 @@ export class AppComponent {
   constructor(private router: Router, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
+
+    this.router.events.pipe(filter(event => event instanceof ActivationEnd))
+      .subscribe((event: ActivationEnd) => {
+        this.currentRouteTitle = event.snapshot.data?.routeTitle;
+      });
+
     this.router.events.pipe(mergeMap(event => {
       return this.isHandset$;
     })).subscribe(isSideNavVisible => {
@@ -32,10 +38,6 @@ export class AppComponent {
         this.sideNav.close();
       }
     });
-  }
-
-  onSideNavRoute(routeTitle: string) {
-    this.currentRouteTitle = routeTitle;
   }
 
 }
