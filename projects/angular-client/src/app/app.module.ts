@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewMeetingModule } from './new-meeting/new-meeting.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { MeetingModule } from './meeting/meeting.module';
+import { RegisterModule } from './register/register.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { MeetingModule } from './meeting/meeting.module';
     MyTasksModule,
     NewMeetingModule,
     AuthenticationModule,
-    MeetingModule
+    MeetingModule,
+    RegisterModule,
+    LoginModule
   ],
   providers: [
     //{ provide: MeetingService, useClass: MockMeetingService },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication/services/authentication.service';
 import { MeetingInfo } from '../meeting-common/models/meeting-info.model';
 import { MeetingSearchParams } from '../meeting-common/models/meeting-search-params.model';
 import { MeetingService } from '../meeting-common/services/meeting.service';

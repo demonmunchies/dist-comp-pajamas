@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, mergeMap, shareReplay } from 'rxjs/operators';
+import { AuthenticationService } from './authentication/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,11 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private router: Router, private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private router: Router,
+    private breakpointObserver: BreakpointObserver,
+    public auth: AuthenticationService
+  ) { }
 
   ngOnInit() {
 
