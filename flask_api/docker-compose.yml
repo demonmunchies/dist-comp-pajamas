@@ -1,6 +1,8 @@
 web:
   build: .
-  command: python autoapp.py
+  command: python -u autoapp.py
+  environment:
+    - GOOGLE_APPLICATION_CREDENTIALS=key.json
   ports:
     - "5000:5000"
   volumes:

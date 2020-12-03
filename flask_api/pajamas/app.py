@@ -4,7 +4,8 @@ from pajamas.extensions import (
     bcrypt,
     mongo,
     socketio,
-    cors
+    cors,
+    model
 )
 
 
@@ -22,6 +23,7 @@ def register_extensions(app):
     socketio.init_app(app)
     if app.config['DEBUG']:
         cors.init_app(app)
+    model.init_app(app)
     return None
 
 
