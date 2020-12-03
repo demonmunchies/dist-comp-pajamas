@@ -41,8 +41,8 @@ def signup():
         }
         user_id = mongo.db.users.insert_one(user).inserted_id
         token = login_user(user_id)
-        return make_response(jsonify({'status': 'success', 'token': token}), 200)
-    return make_response(jsonify({'status': 'failed'}), 200)
+        return make_response(jsonify({'status': 'success', 'token': token, 'user_id': str(user_id), 'user_name': name}), 200)
+    return make_response(jsonify({'status': 'failed'}), 500)
 
 
 @bp.route('/login', methods=['POST'])
@@ -55,10 +55,13 @@ def login():
         valid = bcrypt.check_password_hash(user['password'], password)
         if valid:
             session = mongo.db.sessions.find_one({'user_id': str(user['_id'])})
+            token = ''
             if not session:
                 token = login_user(user['_id'])
-                return make_response(jsonify({'status': 'success', 'token': token}), 200)
-    return make_response(jsonify({'status': 'failed'}), 200)
+            else:
+                token = session['token']
+            return make_response(jsonify({'status': 'success', 'token': token, 'user_id': str(user['_id']), 'user_name': str(user['name'])}), 200)
+    return make_response(jsonify({'status': 'failed'}), 500)
 
 
 @bp.route('/logout', methods=['POST'])
@@ -72,7 +75,7 @@ def logout():
         if authenticate(user_id, token):
             logout_user(user_id)
             return make_response(jsonify({'status': 'success'}), 200)
-    return make_response(jsonify({'status': 'failed'}), 200)
+    return make_response(jsonify({'status': 'failed'}), 500)
 
 
 def login_user(user_id):
