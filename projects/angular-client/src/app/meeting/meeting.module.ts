@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
     MeetingRoutingModule,
     MatCardModule,
     FlexLayoutModule,
+    MatGridListModule,
     MatButtonModule,
     MatIconModule,
     MatRippleModule,

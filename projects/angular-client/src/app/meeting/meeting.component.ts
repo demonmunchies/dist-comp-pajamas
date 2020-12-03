@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as dayjs from 'dayjs';
 import { throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+import { AuthenticationService } from '../authentication/services/authentication.service';
 import { MeetingInfo } from '../meeting-common/models/meeting-info.model';
 import { MeetingService } from '../meeting-common/services/meeting.service';
 
@@ -15,7 +16,7 @@ export class MeetingComponent implements OnInit {
   meeting: MeetingInfo;
 
   get canStart(): boolean {
-    return !this.meeting.start_date && !this.meeting.end_date; //&& is creator.
+    return !this.meeting.start_date && !this.meeting.end_date && this.auth.userId === this.meeting.creator_id;
   }
 
   get isInProgress(): boolean {
@@ -27,11 +28,11 @@ export class MeetingComponent implements OnInit {
   }
 
   get canStop(): boolean {
-    return this.isInProgress; //&& is creator.
+    return this.isInProgress && this.auth.userId === this.meeting.creator_id;
   }
 
   get canJoin(): boolean {
-    return this.isInProgress; // && is participant.
+    return this.isInProgress && this.auth.userId !== this.meeting.creator_id;
   }
 
   get status(): string {
@@ -50,7 +51,11 @@ export class MeetingComponent implements OnInit {
     return end.diff(start, 'minute');
   }
 
-  constructor(private meetingService: MeetingService, private route: ActivatedRoute) { }
+  constructor(
+    private meetingService: MeetingService,
+    private route: ActivatedRoute,
+    public auth: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.pipe(mergeMap(params => {

@@ -28,11 +28,10 @@ def all_meetings():
 @bp.route('/add', methods=['POST'])
 def add_meeting():
     post_data = request.json
-    email = post_data.get('email')
+    user_id = post_data.get('user_id')
     token = post_data.get('token')
-    user = mongo.db.users.find_one({'email': email})
+    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
     if user:
-        user_id = user['_id']
         if authenticate(user_id, token):
             start_date = post_data.get('start_date')
             end_date = post_data.get('end_date')
@@ -54,11 +53,10 @@ def add_meeting():
 @bp.route('/update', methods=['PUT'])
 def update_meeting():
     post_data = request.json
-    email = post_data.get('email')
+    user_id = post_data.get('user_id')
     token = post_data.get('token')
-    user = mongo.db.users.find_one({'email': email})
+    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
     if user:
-        user_id = user['_id']
         meeting_id = post_data.get('meeting_id')
         if authenticate(user_id, token) and meeting_id:
             start_date = post_data.get('start_date')
@@ -97,11 +95,10 @@ def update_meeting():
 @bp.route('/get', methods=['POST'])
 def get_meeting():
     post_data = request.json
-    email = post_data.get('email')
+    user_id = post_data.get('user_id')
     token = post_data.get('token')
-    user = mongo.db.users.find_one({'email': email})
+    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
     if user:
-        user_id = user['_id']
         if authenticate(user_id, token):
             meeting_id = post_data.get('meeting_id')
             if meeting_id:
