@@ -1,6 +1,7 @@
 import pathlib
 import os
 import wave
+import json
 from flask import (
     Flask,
     make_response,
@@ -13,7 +14,8 @@ from flask import (
     current_app
 )
 from flask_socketio import emit, join_room, leave_room
-from pajamas.extensions import mongo, socketio
+from google.cloud import speech
+from pajamas.extensions import mongo, socketio, model
 
 
 bp = Blueprint('audio_bp', __name__, template_folder='templates')
@@ -68,8 +70,8 @@ def joined(data):
 def left(data):
     name = data.get('name')
     room_id = data.get('room')
-    remove_room_member(room_id, name)
     leave_room(room_id)
+    remove_room_member(room_id, name)
     emit('status', {'msg': name + ' has left the room.'}, room=room_id)
 
 
@@ -125,4 +127,41 @@ def binary_to_wave(room_id):
             wf.setframerate(16000)
             wf.writeframes(f.read())
             wf.close()
-        os.remove(f'{audio_dir}/{bin_filename}')
+        transcribe_file(file_id)
+        predict_file(file_id)
+
+
+def transcribe_file(file_id):
+    audio_dir = current_app.config['AUDIO_DIR']
+    speech_file = f'{audio_dir}/{file_id}.wav'
+    transcription_file = f'{audio_dir}/{file_id}.txt'
+
+    client = speech.SpeechClient()
+    with open(speech_file, "rb") as audio_file:
+        content = audio_file.read()
+
+    audio = speech.RecognitionAudio(content=content)
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=16000,
+        language_code="en-US",
+    )
+    operation = client.long_running_recognize(config=config, audio=audio)
+
+    response = operation.result(timeout=90)
+    transcribed_text = response.results[0].alternatives[0].transcript
+    with open(transcription_file, 'w') as f:
+        f.write(transcribed_text)
+
+
+def predict_file(file_id):
+    audio_dir = current_app.config['AUDIO_DIR']
+    with open(f'{audio_dir}/{file_id}.txt', 'r') as f:
+        text = f.read()
+    tokens, labels = model.predict(text)
+    json_obj = {
+        'tokens': tokens,
+        'labels': labels
+    }
+    with open(f'{audio_dir}/{file_id}.json', 'w') as f:
+        json.dump(json_obj, f)

@@ -1,3 +1,5 @@
 __pycache__/
 *.py[cod]
-*.wav
+flask_api/pajamas/audio/files/*
+pytorch_model.bin
+key.json
