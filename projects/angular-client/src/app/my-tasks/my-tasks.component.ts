@@ -9,7 +9,11 @@ import { TaskService } from '../task-common/services/task.service';
 })
 export class MyTasksComponent implements OnInit {
 
-  tasks: TaskInfo[] = [];
+  tasks: TaskInfo[] = [{ id: "1", title: "summarize the main points of the last meeting." },
+  { id: "2", title: "approving the changes in our sales" },
+  { id: "3", title: "briefly revising the changes that will take place" },
+  { id: "4", title: "brainstorming session concerning after customer support improvements" },
+  { id: "4", title: "find a copy of the main ideas developed and discussed in these sessions in the photocopies in front you" }];
 
   get myTasks(): TaskInfo[] {
     return this.tasks.filter(task => task?.assigneeId === "1");
@@ -26,9 +30,9 @@ export class MyTasksComponent implements OnInit {
       offset: 0,
       rows: 10
     };
-    this.taskService.search(params).subscribe(response => {
-      this.tasks = response.results;
-    });
+    //this.taskService.search(params).subscribe(response => {
+    //  this.tasks = response.results;
+    //});
   }
 
 }

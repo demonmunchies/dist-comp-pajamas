@@ -38,11 +38,11 @@ export class MeetingService implements MeetingServiceInterface {
   }
 
   get(id: string): Observable<MeetingInfo> {
-    const data = { 
+    const data = {
       meeting_id: id,
       user_id: this.auth.userId,
       token: this.auth.token
-     };
+    };
     return this.http.post<{ data: MeetingInfo, status: string }>(`http://localhost:5000/meetings/get`, data).pipe(
       map(response => {
         return response.data;
