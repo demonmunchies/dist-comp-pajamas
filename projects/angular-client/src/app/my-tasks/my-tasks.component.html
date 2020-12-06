@@ -17,10 +17,10 @@
     <mat-list-item>
         <mat-icon mat-list-icon>assignment</mat-icon>
         <div mat-line>{{task.title}}</div>
-        <div mat-line *ngIf="task.description">{{task.description}}</div>
+        <div mat-line *ngIf="task?.description">{{task.description}}</div>
         <div mat-line mat-card-subtitle>
-            <span>{{task.assigneeId ? "Assigned to " + (task.assigneeId) : "Not Assigned"}}</span>
-            <span> &#183; {{task.startDate ? "Started on " + (task.startDate | date) : "Not Started"}}</span>
+            <span>{{task?.assigneeId ? "Assigned to " + (task.assigneeId) : "Not Assigned"}}</span>
+            <span> &#183; {{task?.startDate ? "Started on " + (task.startDate | date) : "Not Started"}}</span>
         </div>
     </mat-list-item>
 </ng-template>

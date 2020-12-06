@@ -1,3 +1,6 @@
 <div class="container">
     <app-meetings-list [meetings]="meetings"></app-meetings-list>
+    <h4 *ngIf="!meetings?.length">
+        <i>No Meetings Yet</i>
+    </h4>
 </div>

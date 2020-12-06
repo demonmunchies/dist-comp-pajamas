@@ -1,28 +1,93 @@
-<mat-card *ngIf="meeting">
-    <mat-card-header>
-        <mat-icon mat-card-avatar>schedule</mat-icon>
-        <mat-card-title>{{meeting.title}}</mat-card-title>
-        <mat-card-subtitle>
-            <div class="mat-primary">{{status}}</div>
-            <div><span>{{meeting.start_date | date:"short"}}
-                    {{meeting.end_date ? " to " + (meeting.end_date | date:"short") : ""}}</span>
-                <span *ngIf="isInProgress">
-                    &#183; {{totalMinutes(meeting.start_date) + " mins"}}
-                </span>
-                <span *ngIf="isDone">
-                    &#183; {{totalMinutes(meeting.start_date, meeting.end_date) + " mins"}}
-                </span>
+<div class="container" *ngIf="meeting">
+    <div fxLayout="row wrap" fxLayoutGap="1rem grid">
+        <div fxFlex="75%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <div fxLayout="column wrap" fxLayoutGap="1rem grid">
+                <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>{{meeting.title}}</mat-card-title>
+                            <mat-card-subtitle>
+                                <div class="mat-primary">{{status}}</div>
+                                <div><span>{{meeting.start_date | date:"short"}}
+                                        {{meeting.end_date ? " to " + (meeting.end_date | date:"short") : ""}}</span>
+                                    <span *ngIf="isInProgress">
+                                        &#183; Time Elapsed is {{timeElapsed}} secs
+                                    </span>
+                                    <span *ngIf="isDone">
+                                        &#183; {{totalMinutes(meeting.start_date, meeting.end_date) + " mins"}}
+                                    </span>
+                                </div>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button *ngIf="canStart" mat-raised-button color="primary" (click)="onStart()">START
+                                MEETING</button>
+                            <button *ngIf="canStop" mat-raised-button color="warn">END MEETING</button>
+                            <button *ngIf="canJoin" mat-raised-button color="primary">JOIN MEETING</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div *ngIf="isInProgress || isDone" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Transcription</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p *ngFor="let phrase of transcript">
+                                <b>{{phrase.timestamp}} ({{participants[phrase.participant_index]}})</b> -
+                                {{phrase.text}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div *ngIf="isInProgress || isDone" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Extracted Action Items</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-list dense>
+                                <ng-container *ngFor="let task of tasks">
+                                    <mat-list-item>
+                                        <mat-icon mat-list-icon>assignment</mat-icon>
+                                        <div mat-line>{{task.title}}</div>
+                                        <div mat-line *ngIf="task?.description">{{task.description}}</div>
+                                        <div mat-line mat-card-subtitle>
+                                            <span>{{task?.assigneeId ? "Assigned to " + (task.assigneeId) : "Not Assigned"}}</span>
+                                            <span> &#183;
+                                                {{task?.startDate ? "Started on " + (task.startDate | date) : "Not Started"}}</span>
+                                        </div>
+                                    </mat-list-item>
+                                </ng-container>
+                            </mat-list>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
             </div>
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <span *ngFor="let participantId of meeting.participant_ids">
-            <mat-icon mat-card-avatar>account_circle</mat-icon>
-        </span>
-    </mat-card-content>
-    <mat-card-actions>
-        <button *ngIf="canStart" mat-raised-button color="primary" (click)="onStart()">START</button>
-        <button *ngIf="canStop" mat-raised-button color="warn">STOP</button>
-        <button *ngIf="canJoin" mat-raised-button color="primary">JOIN</button>
-    </mat-card-actions>
-</mat-card>
+        </div>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Participants</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item *ngFor="let participantId of participants">
+                            <mat-icon matListIcon>account_circle</mat-icon>
+                            <h3 matLine>{{participantId}} </h3>
+                            <mat-icon color="primary">microphone</mat-icon>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+
+</div>
+
+<button *ngIf="isInProgress" color="primary" type="button" class="float-button-right" mat-fab>
+    <mat-icon class="icon">microphone</mat-icon>
+</button>
